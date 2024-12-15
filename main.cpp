@@ -416,19 +416,63 @@ void runTicTacToe4x4() {
     string player1_name, player2_name;
     int player1_type, player2_type;
 
-    cout << "Enter Player 1's name: ";
-    cin.ignore();
-    getline(cin, player1_name);
+    while (true) {
+        cout << "Enter name for Player 1: ";
+        getline(cin, player1_name);
+        if (!player1_name.empty()) {
+            break;
+        }
+        else {
+            cout << "Name cannot be empty. Please enter a valid name.\n";
+        }
+    }
 
-    cout << "Choose Player 1 type: \n1. Human \n2. Random Computer\n";
-    cin >> player1_type;
-    cin.ignore();
+    while (true) {
+        cout << "Choose the player's type:\n";
+        cout << "1. Human\n";
+        cout << "2. Random Computer\n";
+        cout << "Enter your choice (1 or 2): ";
+        cin >> player1_type;
+        cin.ignore();
 
-    cout << "Enter Player 2's name: ";
-    getline(cin, player2_name);
+        if (cin.fail() || (player1_type != 1 && player1_type != 2)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice. Please enter 1 or 2.\n";
+        }
+        else {
+            break;
+        }
+    }
 
-    cout << "Choose Player 2 type: \n1. Human \n2. Random Computer\n";
-    cin >> player2_type;
+    while (true) {
+        cout << "Enter name for Player 2: ";
+        getline(cin, player2_name);
+        if (!player2_name.empty()) {
+            break;
+        }
+        else {
+            cout << "Name cannot be empty. Please enter a valid name.\n";
+        }
+    }
+
+    while (true) {
+        cout << "Choose the player's type:\n";
+        cout << "1. Human\n";
+        cout << "2. Random Computer\n";
+        cout << "Enter your choice (1 or 2): ";
+        cin >> player2_type;
+        cin.ignore();
+
+        if (cin.fail() || (player2_type != 1 && player2_type != 2)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice. Please enter 1 or 2.\n";
+        }
+        else {
+            break;
+        }
+    }
 
     TicTacToe4x4Board<char> board;
     Player<char>* players[2];
@@ -464,18 +508,63 @@ void runTicTacToe5x5() {
     string player1_name, player2_name;
     int player1_type, player2_type;
 
-    cout << "Enter Player 1's name: ";
-    getline(cin, player1_name);
+    while (true) {
+        cout << "Enter name for Player 1: ";
+        getline(cin, player1_name);
+        if (!player1_name.empty()) {
+            break;
+        }
+        else {
+            cout << "Name cannot be empty. Please enter a valid name.\n";
+        }
+    }
 
-    cout << "Choose Player 1 type: \n1. Human \n2. Random Computer\n";
-    cin >> player1_type;
-    cin.ignore();
+    while (true) {
+        cout << "Choose the player's type:\n";
+        cout << "1. Human\n";
+        cout << "2. Random Computer\n";
+        cout << "Enter your choice (1 or 2): ";
+        cin >> player1_type;
+        cin.ignore();
 
-    cout << "Enter Player 2's name: ";
-    getline(cin, player2_name);
+        if (cin.fail() || (player1_type != 1 && player1_type != 2)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice. Please enter 1 or 2.\n";
+        }
+        else {
+            break;
+        }
+    }
 
-    cout << "Choose Player 2 type: \n1. Human \n2. Random Computer\n";
-    cin >> player2_type;
+    while (true) {
+        cout << "Enter name for Player 2: ";
+        getline(cin, player2_name);
+        if (!player2_name.empty()) {
+            break;
+        }
+        else {
+            cout << "Name cannot be empty. Please enter a valid name.\n";
+        }
+    }
+
+    while (true) {
+        cout << "Choose the player's type:\n";
+        cout << "1. Human\n";
+        cout << "2. Random Computer\n";
+        cout << "Enter your choice (1 or 2): ";
+        cin >> player2_type;
+        cin.ignore();
+
+        if (cin.fail() || (player2_type != 1 && player2_type != 2)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice. Please enter 1 or 2.\n";
+        }
+        else {
+            break;
+        }
+    }
 
     TicTacToe5x5Board<char> board;
     Player<char>* players[2];
@@ -509,19 +598,63 @@ void runMisereTicTacToe() {
     string player1_name, player2_name;
     int player1_type, player2_type;
 
-    cout << "Enter Player 1's name: ";
-    getline(cin, player1_name);
+    while (true) {
+        cout << "Enter name for Player 1: ";
+        getline(cin, player1_name);
+        if (!player1_name.empty()) {
+            break;
+        }
+        else {
+            cout << "Name cannot be empty. Please enter a valid name.\n";
+        }
+    }
 
-    cout << "Choose Player 1 type: \n1. Human \n2. Random Computer\n";
-    cin >> player1_type;
-    cin.ignore();
+    while (true) {
+        cout << "Choose the player's type:\n";
+        cout << "1. Human\n";
+        cout << "2. Random Computer\n";
+        cout << "Enter your choice (1 or 2): ";
+        cin >> player1_type;
+        cin.ignore();
 
-    cout << "Enter Player 2's name: ";
-    getline(cin, player2_name);
+        if (cin.fail() || (player1_type != 1 && player1_type != 2)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice. Please enter 1 or 2.\n";
+        }
+        else {
+            break;
+        }
+    }
 
-    cout << "Choose Player 2 type: \n1. Human \n2. Random Computer\n";
-    cin >> player2_type;
-    cin.ignore();
+    while (true) {
+        cout << "Enter name for Player 2: ";
+        getline(cin, player2_name);
+        if (!player2_name.empty()) {
+            break;
+        }
+        else {
+            cout << "Name cannot be empty. Please enter a valid name.\n";
+        }
+    }
+
+    while (true) {
+        cout << "Choose the player's type:\n";
+        cout << "1. Human\n";
+        cout << "2. Random Computer\n";
+        cout << "Enter your choice (1 or 2): ";
+        cin >> player2_type;
+        cin.ignore();
+
+        if (cin.fail() || (player2_type != 1 && player2_type != 2)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice. Please enter 1 or 2.\n";
+        }
+        else {
+            break;
+        }
+    }
 
     MisereTicTacToeBoard<char> board;
     Player<char>* players[2];
@@ -683,6 +816,7 @@ int main() {
                 runMisereTicTacToe();
                 break;
             case 7:
+                cin.ignore();
                 runTicTacToe4x4();
                 break;
             case 8:
