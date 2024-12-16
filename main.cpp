@@ -193,7 +193,7 @@ void runPyramidTicTacToe() {
 }
 
 void runWordTicTacToe() {
-    set<string> dictionary = loadDictionary("dic.txt");
+    set<string> dictionary = loadDictionary("dictionary.txt");
 
     string player1Name, player2Name;
     int player1Type, player2Type;
