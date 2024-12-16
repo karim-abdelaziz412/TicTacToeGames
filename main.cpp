@@ -8,9 +8,116 @@
 #include "MisereTicTacToe.h"
 #include "TicTacToe4x4.h"
 #include "ultimate_tic_tac_toe_board.h"
-
+#include "SUS_Game.h"
 
 using namespace std;
+
+void runSUSGame() {
+    while (true) {
+        int score1 = 0, score2 = 0;
+        int currentPlayer = 0;
+
+        cout << "1. Two players\n";
+        cout << "2. Player vs Random moves\n";
+        cout << "3. Exit\n";
+        cout << "Enter your choice (1, 2, or 3): ";
+
+        int choice;
+        while (!(cin >> choice) || (choice != 1 && choice != 2 && choice != 3)) {
+            cout << "Invalid input. Please enter a valid choice (1, 2, or 3): ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
+        if (choice == 3) {
+            cout << "\nGoodbye.\n_\n";
+            break;
+        }
+
+        string player1_name, player2_name;
+
+        cout << "Enter the name for Player 1: ";
+        cin.ignore();
+        getline(cin, player1_name);
+
+        SUSBoard board;
+        SUSPlayer player1(player1_name);
+
+        Player<char>* player2;
+
+        if (choice == 1) {
+            cout << "Enter the name for Player 2: ";
+            getline(cin, player2_name);
+            player2 = new SUSPlayer(player2_name);
+        }
+        else {
+            player2_name = "Random Player";
+            player2 = new SUSRandomPlayer(player2_name, &board);
+        }
+
+        player1.setBoard(&board);
+        player2->setBoard(&board);
+
+        Player<char>* players[2] = { &player1, player2 };
+
+        GameManager<char> game(&board, players);
+
+        while (!board.game_is_over()) {
+            int x, y;
+            board.display_board();
+            players[currentPlayer]->getmove(x, y);
+
+            while (!board.update_board(x, y, players[currentPlayer]->getsymbol())) {
+                cout << "Invalid move. Try again.\n";
+                players[currentPlayer]->getmove(x, y);
+            }
+
+            if (is_sus_sequence(board.get_board(), x, y)) {
+                cout << "\n__" << players[currentPlayer]->getname() << " scores a point!\n";
+                if (currentPlayer == 0) {
+                    score1++;
+                }
+                else {
+                    score2++;
+                }
+            }
+
+            currentPlayer = 1 - currentPlayer;
+        }
+
+        cout << "\n_\n\nFinal Scores: " << player1_name << ": " << score1 << " | " << player2_name << ": " << score2 << "\n\n";
+
+        if (score1 > score2) {
+            cout << player1_name << " wins!\n";
+        }
+        else if (score2 > score1) {
+            cout << player2_name << " wins!\n";
+        }
+        else {
+            cout << "Draw!\n";
+        }
+
+        delete player2;
+
+        cout << "\n_\n\nGame Over!\n";
+        cout << "1. Play Again\n";
+        cout << "2. Exit\n";
+        cout << "Enter your choice: ";
+
+        int play_again_choice;
+        while (!(cin >> play_again_choice) || (play_again_choice != 1 && play_again_choice != 2)) {
+            cout << "Invalid input.";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
+        if (play_again_choice == 2) {
+            cout << "\nThanks for playing SUS game.\n_\n";
+            break;
+        }
+    }
+}
+
 
 void runUltimateTicTacToe(){
     int x, y;
@@ -787,7 +894,8 @@ int main() {
         cout << "6. Misere Tic-Tac-Toe\n";
         cout << "7. 4x4 Tic-Tac-Toe\n";
         cout << "8. Ultimate Tic-Tac-Toe\n";
-        cout << "9. Exit\n";
+        cout << "9. SUS\n";
+        cout << "10.Exit\n";
 
         cout << "Enter your choice: ";
         cin >> gameChoice;
@@ -822,12 +930,15 @@ int main() {
             case 8:
                 runUltimateTicTacToe();
             case 9:
+                srand(time(0));
+                runSUSGame();
+            case 10:
                 cout << "Exiting the game. Goodbye!" << endl;
                 break;
             default:
                 cout << "Invalid choice, please try again!" << endl;
         }
-    } while (gameChoice != 9);
+    } while (gameChoice != 10);
 
     return 0;
 }
