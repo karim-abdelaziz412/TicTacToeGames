@@ -112,7 +112,7 @@ public:
 			{
 				if (board[rows][col] == board[rows + 1][col] && board[rows + 1][col] == board[rows + 2][col] && board[rows][col] != ' ' && board[rows][col] != 0 && small_board[int(rows / 3)][int(col / 3)] == 0)
 				{
-					update_small_board(floor(rows / 3), (col / 3), board[rows][col]);
+					update_small_board((rows / 3), (col / 3), board[rows][col]);
 					return;
 				}
 			}
